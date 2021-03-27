@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Graph Builder</string>
+    <string name="build">Build</string>
+    <string name="axes">Axes</string>
+    <string name="xmin" translatable="false">xMin</string>
+    <string name="xmax" translatable="false">xMax</string>
+    <string name="axes_color">Axes color</string>
+    <string name="black">Black</string>
+    <string name="blue">Blue</string>
+    <string name="red">Red</string>
+    <string name="graph">Graph</string>
+    <string name="green">Green</string>
+    <string name="graph_color">Graph color</string>
+    <string name="graph_thickness">Graph thickness</string>
+    <string name="thin">Thin</string>
+    <string name="medium">Medium</string>
+    <string name="thick">Thick</string>
 </resources>

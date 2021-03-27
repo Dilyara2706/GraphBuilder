@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.dilyara.graphbuilder.CoordinatesConverter
 import com.dilyara.graphbuilder.R
 
 class CartesianPainter : View {
@@ -59,7 +58,6 @@ class CartesianPainter : View {
 
         axesPaint = Paint(Paint.ANTI_ALIAS_FLAG)
         axesPaint.style = Paint.Style.STROKE
-
 
         if (set == null) return
 

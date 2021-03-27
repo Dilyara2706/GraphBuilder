@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Graph Builder</string>
+    <string name="build">Построить</string>
+    <string name="axes">Оси</string>
+    <string name="axes_color">Цвет осей</string>
+    <string name="black">Черный</string>
+    <string name="blue">Синий</string>
+    <string name="red">Красный</string>
+    <string name="graph">График</string>
+    <string name="green">Зеленый</string>
+    <string name="graph_color">Цвет графика</string>
+    <string name="graph_thickness">Толщина графика</string>
+    <string name="thin">Тонкий</string>
+    <string name="medium">Средний</string>
+    <string name="thick">Толстый</string>
+</resources>
