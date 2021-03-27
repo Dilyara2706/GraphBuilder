@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CartesianPainter">
+        <attr name="axesColor" format="color"/>
+        <attr name="graphColor" format="color"/>
+        <attr name="axesThickness" format="dimension"/>
+        <attr name="graphThickness" format="dimension"/>
+    </declare-styleable>
+</resources>
