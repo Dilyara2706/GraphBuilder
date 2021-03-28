@@ -7,46 +7,48 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import com.dilyara.graphbuilder.R
+import com.dilyara.graphbuilder.data.Bounds
+import com.dilyara.graphbuilder.data.Function
 
 class CartesianPainter : View {
 
     private var converter: CoordinatesConverter? = null
 
-    private var axesCoordinates: FloatArray? = null
+    private var axesPainter: AxesPainter? = null
+
+    private var graphPainter: GraphPainter? = null
 
     private lateinit var graphPaint: Paint
 
     private lateinit var axesPaint: Paint
 
-    private var function: ((x: Float) -> Float)? = null
-
     //region Constructors
     constructor(
-            context: Context?
+        context: Context?
     ) : super(context) {
         onInit(null)
     }
 
     constructor(
-            context: Context?,
-            attrs: AttributeSet?
+        context: Context?,
+        attrs: AttributeSet?
     ) : super(context, attrs) {
         onInit(attrs)
     }
 
     constructor(
-            context: Context?,
-            attrs: AttributeSet?,
-            defStyleAttr: Int
+        context: Context?,
+        attrs: AttributeSet?,
+        defStyleAttr: Int
     ) : super(context, attrs, defStyleAttr) {
         onInit(attrs)
     }
 
     constructor(
-            context: Context?,
-            attrs: AttributeSet?,
-            defStyleAttr: Int,
-            defStyleRes: Int
+        context: Context?,
+        attrs: AttributeSet?,
+        defStyleAttr: Int,
+        defStyleRes: Int
     ) : super(context, attrs, defStyleAttr, defStyleRes) {
         onInit(attrs)
     }
@@ -64,10 +66,12 @@ class CartesianPainter : View {
         val ta = context.obtainStyledAttributes(set, R.styleable.CartesianPainter)
 
         graphPaint.color = ta.getColor(R.styleable.CartesianPainter_graphColor, Color.BLACK)
-        graphPaint.strokeWidth = ta.getDimensionPixelSize(R.styleable.CartesianPainter_graphThickness, 1).toFloat()
+        graphPaint.strokeWidth =
+            ta.getDimensionPixelSize(R.styleable.CartesianPainter_graphThickness, 1).toFloat()
 
         axesPaint.color = ta.getColor(R.styleable.CartesianPainter_axesColor, Color.LTGRAY)
-        axesPaint.strokeWidth = ta.getDimensionPixelSize(R.styleable.CartesianPainter_axesThickness, 1).toFloat()
+        axesPaint.strokeWidth =
+            ta.getDimensionPixelSize(R.styleable.CartesianPainter_axesThickness, 1).toFloat()
 
 
         ta.recycle()
@@ -75,63 +79,40 @@ class CartesianPainter : View {
 
     fun setBounds(xMin: Float, xMax: Float, yMin: Float, yMax: Float) {
         converter = CoordinatesConverter(xMin, xMax, yMin, yMax, width, height)
-        axesCoordinates = floatArrayOf(
-                0f,
-                converter!!.yToScreen(0f),
-                width.toFloat(),
-                converter!!.yToScreen(0f),
-                converter!!.xToScreen(0f),
-                0f,
-                converter!!.xToScreen(0f),
-                height.toFloat()
+        axesPainter = AxesPainter(
+            axesPaint,
+            converter!!,
+            resources.getDimensionPixelSize(R.dimen.dash_length)
         )
-
     }
 
-    fun drawByFunction(function: (x: Float) -> Float) {
-        this.function = function
-        postInvalidate()
+    fun setBounds(bounds: Bounds) {
+        setBounds(
+            bounds.xMin.toFloat(),
+            bounds.xMax.toFloat(),
+            bounds.yMin.toFloat(),
+            bounds.yMax.toFloat()
+        )
+    }
+
+    fun setFunction(function: Function){
+        graphPainter = GraphPainter(graphPaint, function, converter!!)
     }
 
     override fun onDraw(canvas: Canvas?) {
         converter?.let { converter ->
             converter.width = width
             converter.height = height
-
-            axesCoordinates?.let {
-                it[0] = 0f
-                it[1] = converter.yToScreen(0f)
-                it[2] = width.toFloat()
-                it[3] = converter.yToScreen(0f)
-                it[4] = converter.xToScreen(0f)
-                it[5] = 0f
-                it[6] = converter.xToScreen(0f)
-                it[7] = height.toFloat()
-            }
         }
         drawAxes(canvas)
         drawGraph(canvas)
     }
 
     private fun drawAxes(canvas: Canvas?) {
-        axesCoordinates?.let {
-            canvas?.drawLines(it, axesPaint)
-        }
+        canvas?.let { axesPainter?.paint(it) }
     }
 
     private fun drawGraph(canvas: Canvas?) {
-        function?.let { function ->
-            converter?.let {
-                for (x in 0 until width) {
-                    canvas?.drawLine(
-                            x.toFloat(),
-                            it.yToScreen(function(it.xToCartesian(x))),
-                            (x + 1).toFloat(),
-                            it.yToScreen(function(it.xToCartesian(x + 1))),
-                            graphPaint
-                    )
-                }
-            }
-        }
+        canvas?.let { graphPainter?.paint(it) }
     }
 }

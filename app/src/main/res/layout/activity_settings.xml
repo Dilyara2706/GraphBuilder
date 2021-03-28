@@ -46,14 +46,14 @@
             android:layout_marginTop="32dp"
             android:text="@string/xmin"
             android:textAppearance="@style/txt_h2"
-            app:layout_constraintEnd_toStartOf="@+id/editTextNumberSigned"
+            app:layout_constraintEnd_toStartOf="@+id/inp_x_min"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <EditText
-            android:id="@+id/editTextNumberSigned"
+            android:id="@+id/inp_x_min"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -73,13 +73,13 @@
             android:layout_marginStart="16dp"
             android:text="@string/xmax"
             android:textAppearance="@style/txt_h2"
-            app:layout_constraintEnd_toStartOf="@+id/editTextNumberSigned3"
+            app:layout_constraintEnd_toStartOf="@+id/inp_x_max"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/editTextNumberSigned"
+            app:layout_constraintStart_toEndOf="@+id/inp_x_min"
             app:layout_constraintTop_toTopOf="@+id/txt_x_min" />
 
         <EditText
-            android:id="@+id/editTextNumberSigned3"
+            android:id="@+id/inp_x_max"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -87,11 +87,11 @@
             android:ems="10"
             android:inputType="numberSigned|numberDecimal"
             android:textAppearance="@style/txt_h2"
-            app:layout_constraintBottom_toBottomOf="@+id/txt_x_min"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_x_max"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/txt_x_max"
-            app:layout_constraintTop_toTopOf="@+id/txt_x_min" />
+            app:layout_constraintTop_toTopOf="@+id/txt_x_max" />
 
 
         <TextView
@@ -102,14 +102,14 @@
             android:layout_marginTop="32dp"
             android:text="yMin"
             android:textAppearance="@style/txt_h2"
-            app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal"
+            app:layout_constraintEnd_toStartOf="@+id/inp_y_min"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_x_min" />
 
         <EditText
-            android:id="@+id/editTextNumberDecimal"
+            android:id="@+id/inp_y_min"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -130,13 +130,13 @@
             android:text="yMax"
             android:textAppearance="@style/txt_h2"
             app:layout_constraintBottom_toBottomOf="@+id/txt_y_min"
-            app:layout_constraintEnd_toStartOf="@+id/editTextNumberDecimal2"
+            app:layout_constraintEnd_toStartOf="@+id/inp_y_max"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toEndOf="@+id/editTextNumberDecimal"
+            app:layout_constraintStart_toEndOf="@+id/inp_y_min"
             app:layout_constraintTop_toTopOf="@+id/txt_y_min" />
 
         <EditText
-            android:id="@+id/editTextNumberDecimal2"
+            android:id="@+id/inp_y_max"
             android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -160,7 +160,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_y_min" />
 
         <RadioGroup
-            android:id="@+id/radioGroup"
+            android:id="@+id/rgrp_axes_color"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_marginStart="16dp"
@@ -202,7 +202,7 @@
             android:textAppearance="@style/txt_h1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+            app:layout_constraintTop_toBottomOf="@+id/rgrp_axes_color" />
 
         <TextView
             android:id="@+id/textView9"
@@ -216,7 +216,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
         <RadioGroup
-            android:id="@+id/radioGroup3"
+            android:id="@+id/rgrp_graph_color"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_marginStart="16dp"
@@ -258,10 +258,10 @@
             android:text="@string/graph_thickness"
             android:textAppearance="@style/txt_h2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup3" />
+            app:layout_constraintTop_toBottomOf="@+id/rgrp_graph_color" />
 
         <RadioGroup
-            android:id="@+id/radioGroup4"
+            android:id="@+id/rgrp_graph_thikness"
             android:layout_width="wrap_content"
             android:layout_height="32dp"
             android:layout_marginStart="16dp"
@@ -295,6 +295,7 @@
         </RadioGroup>
 
         <RadioGroup
+            android:id="@+id/rgrp_functions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -304,7 +305,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioGroup4"
+            app:layout_constraintTop_toBottomOf="@+id/rgrp_graph_thikness"
             app:layout_constraintVertical_bias="1.0">
 
             <RadioButton
