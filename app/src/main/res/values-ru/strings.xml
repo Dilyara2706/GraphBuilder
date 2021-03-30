@@ -14,4 +14,7 @@
     <string name="thin">Тонкий</string>
     <string name="medium">Средний</string>
     <string name="thick">Толстый</string>
+    <string name="empty_field_error">Поле должно быть заполнено</string>
+    <string name="no_function_selected">Не выбрана функция</string>
+    <string name="no_graph_settings">Настроект для графика не найдено</string>
 </resources>

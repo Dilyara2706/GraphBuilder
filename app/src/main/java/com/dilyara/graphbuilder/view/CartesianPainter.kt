@@ -99,6 +99,21 @@ class CartesianPainter : View {
         graphPainter = GraphPainter(graphPaint, function, converter!!)
     }
 
+    fun setAxesColor(color: Int){
+        axesPaint.color = color
+        postInvalidate()
+    }
+
+    fun setGraphColor(color: Int){
+        graphPaint.color = color
+        postInvalidate()
+    }
+
+    fun setGraphThickness(thickness: Int){
+        graphPaint.strokeWidth = thickness.toFloat()
+        postInvalidate()
+    }
+
     override fun onDraw(canvas: Canvas?) {
         converter?.let { converter ->
             converter.width = width

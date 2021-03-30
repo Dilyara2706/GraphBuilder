@@ -15,4 +15,7 @@
     <string name="thin">Thin</string>
     <string name="medium">Medium</string>
     <string name="thick">Thick</string>
+    <string name="empty_field_error">The field must be filled</string>
+    <string name="no_function_selected">No function selected</string>
+    <string name="no_graph_settings">No graph settings found</string>
 </resources>

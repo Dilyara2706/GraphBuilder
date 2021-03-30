@@ -2,4 +2,7 @@
 <resources>
     <dimen name="btn_margin">16dp</dimen>
     <dimen name="dash_length">4dp</dimen>
+    <dimen name="graph_thickness_thin">1dp</dimen>
+    <dimen name="graph_thickness_medium">3dp</dimen>
+    <dimen name="graph_thickness_thick">6dp</dimen>
 </resources>
